@@ -5,7 +5,9 @@ import 'package:easacc_task/core/utils/app_colors.dart';
 import 'package:easacc_task/core/utils/app_icons.dart';
 import 'package:easacc_task/core/utils/app_images.dart';
 import 'package:easacc_task/view/widgets/login/social_button.dart';
+import 'package:easacc_task/view_models/cubit/sign_in_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 // translate-me-ignore-all-file
 class LoginViewBody extends StatelessWidget {
@@ -57,10 +59,13 @@ class LoginViewBody extends StatelessWidget {
               icon: AppIcons.google,
               buttonText: 'Continue with Google',
               onPressed: () async {
-                await AppNavigation.navigateTo(
-                  context,
-                  AppRoutesName.settingsScreen,
-                );
+                await context.read<SignInCubit>().signInWithGoogle().then((_) {
+                  Future.delayed(const Duration(seconds: 1));
+                  AppNavigation.navigateTo(
+                    context,
+                    AppRoutesName.settingsScreen,
+                  );
+                });
               },
             ),
             SizedBox(height: 16),
