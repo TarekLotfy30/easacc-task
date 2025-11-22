@@ -9,6 +9,7 @@ class AppText extends StatelessWidget {
     this.height,
     this.letterSpacing,
     this.color,
+    this.textAlign,
   });
 
   final String data;
@@ -17,12 +18,13 @@ class AppText extends StatelessWidget {
   final double? height;
   final double? letterSpacing;
   final Color? color;
+  final TextAlign? textAlign;
 
   @override
   Widget build(BuildContext context) {
     return Text(
       data,
-      textAlign: TextAlign.center,
+      textAlign: textAlign ?? TextAlign.center,
       style: TextStyle(
         fontSize: fontSize,
         color: color,

@@ -1,5 +1,6 @@
 import 'package:easacc_task/core/helpers/app_navigation.dart';
 import 'package:easacc_task/core/helpers/app_regex.dart';
+import 'package:easacc_task/core/routing/app_card.dart';
 import 'package:easacc_task/core/routing/app_routes_name.dart';
 import 'package:easacc_task/core/shared_components/app_button.dart';
 import 'package:easacc_task/core/shared_components/app_text.dart';
@@ -32,65 +33,55 @@ class _WebViewCardState extends State<WebViewCard> {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: AppColors.cardBackground,
-      elevation: 2,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(16)),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const AppText(
-                data: "Web View",
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
+    return AppCard(
+      child: Form(
+        key: _formKey,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const AppText(
+              data: "Web View",
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+            const SizedBox(height: 10),
+            TextFormField(
+              onTapOutside: (event) =>
+                  FocusManager.instance.primaryFocus?.unfocus(),
+              keyboardType: TextInputType.url,
+              cursorColor: AppColors.primary,
+              style: const TextStyle(color: Colors.white),
+              maxLines: 1,
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'URL',
               ),
-              const SizedBox(height: 10),
-              TextFormField(
-                onTapOutside: (event) =>
-                    FocusManager.instance.primaryFocus?.unfocus(),
-                keyboardType: TextInputType.url,
-                cursorColor: AppColors.primary,
-                style: const TextStyle(color: Colors.white),
-                maxLines: 1,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'URL',
-                ),
-                controller: _urlController,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter some text';
-                  }
-                  if (!AppRegex.isUrlValid(value)) {
-                    return 'Please enter a valid URL';
-                  }
-                  return null;
-                },
-              ),
-              const SizedBox(height: 10),
-              AppButton(
-                onPressed: () async {
-                  if (_formKey.currentState!.validate()) {
-                    FocusManager.instance.primaryFocus?.unfocus();
-                    await AppNavigation.navigateTo(
-                      context,
-                      AppRoutesName.webViewScreen,
-                      arguments: _urlController.text,
-                    );
-                  }
-                },
-                backgroundColor: AppColors.primary,
-                foregroundColor: Colors.white,
-                child: const AppText(data: 'Open', fontSize: 16),
-              ),
-            ],
-          ),
+              controller: _urlController,
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please enter some text';
+                }
+                if (!AppRegex.isUrlValid(value)) {
+                  return 'Please enter a valid URL';
+                }
+                return null;
+              },
+            ),
+            const SizedBox(height: 10),
+            AppButton(
+              onPressed: () async {
+                if (_formKey.currentState!.validate()) {
+                  FocusManager.instance.primaryFocus?.unfocus();
+                  await AppNavigation.navigateTo(
+                    context,
+                    AppRoutesName.webViewScreen,
+                    arguments: _urlController.text,
+                  );
+                }
+              },
+              child: const AppText(data: 'Open', fontSize: 16),
+            ),
+          ],
         ),
       ),
     );
