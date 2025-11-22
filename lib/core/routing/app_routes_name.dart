@@ -8,4 +8,7 @@ abstract final class AppRoutesName {
 
   // Authentication route
   static const String loginScreen = '/login';
+
+  // WebView route
+  static const String webViewScreen = '/web-view';
 }

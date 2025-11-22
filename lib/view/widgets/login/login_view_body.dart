@@ -1,5 +1,4 @@
 import 'package:easacc_task/core/helpers/app_navigation.dart';
-import 'package:easacc_task/core/helpers/navigation_extension.dart';
 import 'package:easacc_task/core/routing/app_routes_name.dart';
 import 'package:easacc_task/core/shared_components/app_text.dart';
 import 'package:easacc_task/core/utils/app_colors.dart';

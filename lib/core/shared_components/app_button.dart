@@ -29,10 +29,6 @@ class AppButton extends StatelessWidget {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         padding: const EdgeInsets.symmetric(vertical: 20),
         minimumSize: const Size(double.maxFinite, 48),
-        // textStyle: AppTypography.displayMedium.copyWith(
-        //   fontWeight: AppFontWeight.medium,
-        //   fontFamily: AppFontFamilyEnum.cairo.name,
-        // ),
       ),
       child: child,
     );
