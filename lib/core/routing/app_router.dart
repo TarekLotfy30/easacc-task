@@ -1,0 +1,24 @@
+// ═══════════════════════════════════════════════════════════════
+// ROUTER
+// ═══════════════════════════════════════════════════════════════
+import 'package:easacc_task/core/routing/app_routes_name.dart';
+import 'package:easacc_task/view/screens/login_view.dart';
+import 'package:easacc_task/view/screens/settings_view.dart';
+import 'package:flutter/material.dart';
+
+class AppRouter {
+  Route? generateRoute(RouteSettings settings) {
+    switch (settings.name) {
+      case AppRoutesName.loginScreen:
+        return _build(child: const LoginView());
+      case AppRoutesName.settingsScreen:
+        return _build(child: const SettingsView());
+      default:
+        return null;
+    }
+  }
+
+  MaterialPageRoute _build({required Widget child}) {
+    return MaterialPageRoute(builder: (context) => child);
+  }
+}
