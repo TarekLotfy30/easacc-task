@@ -2,8 +2,8 @@
 // ROUTER
 // ═══════════════════════════════════════════════════════════════
 import 'package:easacc_task/core/routing/app_routes_name.dart';
-import 'package:easacc_task/view/screens/login_view.dart';
-import 'package:easacc_task/view/screens/settings_view.dart';
+import 'package:easacc_task/view/screens/login/login_view.dart';
+import 'package:easacc_task/view/screens/settings/settings_view.dart';
 import 'package:flutter/material.dart';
 
 class AppRouter {

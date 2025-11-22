@@ -1,4 +1,4 @@
-import 'package:easacc_task/view/widgets/login_view_body.dart';
+import 'package:easacc_task/view/widgets/login/login_view_body.dart';
 import 'package:flutter/material.dart';
 
 class LoginView extends StatelessWidget {
